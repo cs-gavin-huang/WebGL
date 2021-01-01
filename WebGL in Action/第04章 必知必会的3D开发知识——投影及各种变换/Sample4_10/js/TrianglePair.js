@@ -1,11 +1,21 @@
+/*
+ * @Author: geekli
+ * @Date: 2020-12-31 18:35:17
+ * @LastEditTime: 2020-12-31 18:40:43
+ * @LastEditors: your name
+ * @Description: 
+ * @FilePath: /WebGL/WebGL in Action/第04章 必知必会的3D开发知识——投影及各种变换/Sample4_10/js/TrianglePair.js
+ */
 function TrianglePair(								//声明绘制用物体对象所属类
 	gl,						 					//GL上下文
 	programIn	//着色器程序id
 ){
 	this.vertexData=[
+		//第一个三角形
 		-8 * 0.125, 10 * 0.125, 0,
 		-2 * 0.125, 2 * 0.125, 0,
 		-8 * 0.125, 2 * 0.125, 0,
+		//第二个三角形
 		8 * 0.125, 2 * 0.125, 0,
 		8 * 0.125, 10 * 0.125, 0,
 		2 * 0.125, 10 * 0.125, 0
@@ -17,14 +27,16 @@ function TrianglePair(								//声明绘制用物体对象所属类
 	gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(this.vertexData),gl.STATIC_DRAW);
 
 	this.colorsData=[
+		//第一个三角形颜色
 		1, 1, 1, 1.0,
 		0, 0, 1, 1.0,
 		0, 0, 1, 1.0,
+		//第二个三角形颜色
 		1, 1, 1, 1.0,
 		0, 1, 0, 1.0,
 		0, 1, 0, 1.0
 	];
-	this.colorBuffer=gl.createBuffer();
+	this.colorBuffer=gl.createBuffer(); //创建颜色数据缓冲
 	gl.bindBuffer(gl.ARRAY_BUFFER,this.colorBuffer); 	//绑定颜色数据缓冲
 	//将颜色数据送入缓冲
 	gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(this.colorsData),gl.STATIC_DRAW);
